@@ -18,3 +18,4 @@ class DetalleFactura extends Model{
         return $this->belongsTo(Articulo::class, 'precioUnitario');
     }
 }
+?>
