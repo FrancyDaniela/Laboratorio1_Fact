@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Articulos</title>
+    <title>Atenea</title>
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
     <img class="imagen" src="https://cdn-icons-png.flaticon.com/512/6073/6073873.png"> <br>
     <form action="validacionUser.php" method="POST">
-        <h1>Bienvenido</h1>
+        <h1>Bienvenido/a, a nuestra tienda exclusiva Atenea</h1>
         <div>
         <label class="contenidoInput" for="usuario">Usuario:</label>
         <input class="nombreInput" type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario">
