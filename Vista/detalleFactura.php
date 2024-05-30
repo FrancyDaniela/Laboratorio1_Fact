@@ -1,8 +1,8 @@
 <?php
-require_once '../controllers/DataBaseController.php';
-require_once '../controllers/GenerarFacturaController.php';
+require_once '../controllers/databaseController.php';
+require_once '../controllers/genFactController.php';
 
-use App\controllers\GenerarFacturaController;
+use App\controllers\genFactController;
 
 $clienteId = isset($_GET['numeroDocumento']) ? intval($_GET['numeroDocumento']) : null;
 $referencia = isset($_GET['referencia']) ? $_GET['referencia'] : null;
@@ -11,7 +11,7 @@ if ($clienteId === null || $referencia === null) {
     die("Error: ID de cliente o referencia de factura no proporcionados.");
 }
 
-$facturaController = new GenerarFacturaController();
+$facturaController = new genFactController();
 $facturaData = $facturaController->getFacturaData($clienteId, $referencia);
 
 if (!$facturaData || !$facturaData['factura']) {
@@ -115,6 +115,6 @@ $total = $subtotal - $descuento;
     </form>
 
     <br>
-    <a href="pestañaFactura.php">Regresar</a>
+    <a href="pestFac.php">Regresar</a>
 </body>
 </html>

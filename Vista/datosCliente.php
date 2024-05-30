@@ -20,8 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $telefono = $_POST['telefono'];
 
 
-        require_once '../controllers/dataBaseActualizacion.php';
-        require_once '../controllers/clienteActualizacion.php';
+        require_once '../controllers/databaseAct.php';
+        require_once '../controllers/clientAct.php';
         
         $host = 'localhost';
         $user = 'root';
@@ -31,9 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $db = new databases($host, $user, $pwd, $datab);
         $db->connect();
 
-        $clienteController = new clientController($db);
+        $clientController = new clientController($db);
 
-        if ($clienteController->actualizarCliente($cliente_id, $nombreCompleto, $tipoDocumento, $numeroDocumento, $email, $telefono)) {
+        if ($clientController->actualizarCliente($cliente_id, $nombreCompleto, $tipoDocumento, $numeroDocumento, $email, $telefono)) {
             echo "Cliente actualizado correctamente.";
         } else {
             echo "Error al actualizar el cliente.";

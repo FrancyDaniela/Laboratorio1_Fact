@@ -1,15 +1,15 @@
 <?php
-require_once '../controllers/ArticuloController.php';
-require_once '../controllers/FacturaController.php';
+require_once '../controllers/artController.php';
+require_once '../controllers/factController.php';
 
-use App\controllers\ArticuloController;
-use App\controllers\FacturaController;
+use App\controllers\artController;
+use App\controllers\factController;
 
-$articuloController = new ArticuloController();
-$articulos = $articuloController->read();
+$artController = new artController();
+$articulos = $artController->read();
 
-$facturaController = new FacturaController();
-$numFacturas = $facturaController->getCount() + 1;
+$factController = new factController();
+$numFacturas = $factController->getCount() + 1;
 ?>
 
 <!DOCTYPE html>
@@ -17,12 +17,12 @@ $numFacturas = $facturaController->getCount() + 1;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facturación</title>
+    <title>Sistema de facturación</title>
 </head>
 <body>
-    <form action="validacionCliente.php" method="post">     
+    <form action="valClient.php" method="post">     
         
-        <h2>Datos del Cliente</h2>
+        <h2>Datos personales del Cliente</h2>
         <label for="nombreCompleto">Nombre Completo:</label>
         <input type="text" name="nombreCompleto" id="nombreCompleto" required>
         <br>
@@ -45,12 +45,12 @@ $numFacturas = $facturaController->getCount() + 1;
         <br>
         <input type="submit" value="Validar Cliente">
     </form>
-    <form action="listaClientes.php" method="GET">
+    <form action="listClients.php" method="GET">
         <input type="submit" value="Actualizar Datos">
     </form>
 
     <h1>Crear Factura</h1>
-    <form action="../vista/registroFactura.php" method="post">
+    <form action="../vista/resFact.php" method="post">
     
     <h1 id="referencia">Referencia: <?php echo $numFacturas; ?></h1>
     <input type="hidden" name="referencia" value="<?php echo $numFacturas; ?>"> 
@@ -82,7 +82,7 @@ $numFacturas = $facturaController->getCount() + 1;
         <?php endforeach; ?>
     </ul>
 
-    <form action="../vista/registroDetalleFactura.php" method="post">     
+    <form action="../vista/resDetFac.php" method="post">     
        
         <h1 id="refenciaFactura">Referencia de la factura que se guardan los productos: <?php echo $numFacturas=$numFacturas-1; ?></h1>
         <input type="hidden" name="refenciaFactura" value="<?php echo $numFacturas; ?>">

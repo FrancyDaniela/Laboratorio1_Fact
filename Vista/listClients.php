@@ -18,22 +18,22 @@
         </tr>
         <?php
 
-        include '../controllers/dataBaseActualizacion.php';
+        include '../controllers/databaseAct.php';
         include '../controllers/clienteActualizacion.php';
 
         use App\controllers\ClienteController;
-        use App\controllers\Database;
+        use App\controllers\databases;
 
         $host = 'localhost';
         $user = 'root';
         $pwd = '';
         $datab = 'facturacion_tienda_db';
 
-        $db = new Database($host, $user, $pwd, $datab);
+        $db = new database($host, $user, $pwd, $datab);
         $db->connect();
-        $clienteController = new ClienteController($db);
+        $clientController = new ClientController($db);
 
-        $clientes = $clienteController->getAllClientes();
+        $clientes = $clientController->getAllClientes();
 
         if ($clientes) {
             
@@ -55,6 +55,6 @@
         ?>
     </table>
     <br>
-    <a href="../vista/pestañaFactura.php">Volver</a>
+    <a href="../vista/pestFac.php">Volver</a>
 </body>
 </html>

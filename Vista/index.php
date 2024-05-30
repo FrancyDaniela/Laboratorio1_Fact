@@ -8,7 +8,7 @@
 </head>
 <body>
     <img class="imagen" src="https://cdn-icons-png.flaticon.com/512/6073/6073873.png"> <br>
-    <form action="validacionUser.php" method="POST">
+    <form action="valUser.php" method="POST">
         <h1>Bienvenido/a, a nuestra tienda exclusiva Atenea</h1>
         <div>
         <label class="contenidoInput" for="usuario">Usuario:</label>
