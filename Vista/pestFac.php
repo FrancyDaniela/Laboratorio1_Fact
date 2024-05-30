@@ -1,11 +1,11 @@
 <?php
-require_once '../controllers/DataBaseController.php';
-require_once '../controllers/FacturaController.php';
+require_once '../controllers/databaseController.php';
+require_once '../controllers/factController.php';
 
-use App\controllers\FacturaController;
+use App\controllers\factController;
 
-$facturaController = new FacturaController();
-$numFacturas = $facturaController->getCount() + 1;
+$factController = new factController();
+$numFacturas = $factController->getCount() + 1;
 ?>
 
 <!DOCTYPE html>
@@ -14,14 +14,14 @@ $numFacturas = $facturaController->getCount() + 1;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facturación</title>
-    <link rel="stylesheet" href="../vista/pestañaFacturaCss.css">
+    <link rel="stylesheet" href="../vista/pestFacCss.css">
 </head>
 <body>
 <div class="parent">
-    <div class="div1"><h1>Informacion de la página</h1></div>
+    <div class="div1"><h1>Informacion general de la página</h1></div>
     <div class="div2">
         <h1>Crear Factura</h1>
-        <form action="../vista/registroFactura.php" method="post">
+        <form action="../vista/resFact.php" method="post">
             <h1 id="referencia">Referencia: <?php echo $numFacturas; ?></h1>
             <input type="hidden" name="referencia" value="<?php echo $numFacturas; ?>">
             <label for="fecha">Fecha:</label>
@@ -52,12 +52,12 @@ $numFacturas = $facturaController->getCount() + 1;
     </form>
     </div>
     <div class="div3">
-        <form action="pestañaCliente.php" method="GET">
+        <form action="pestCliente.php" method="GET">
             <input type="submit" value="Crear Cliente">
         </form>
     </div>
     <div class="div4">
-        <form action="listaClientes.php" method="GET">
+        <form action="listClients.php" method="GET">
             <input type="submit" value="Actualizar Datos">
         </form>
     </div>

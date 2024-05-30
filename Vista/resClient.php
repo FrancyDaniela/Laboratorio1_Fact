@@ -1,13 +1,13 @@
 <?php
 include '../models/Model.php';
-include '../models/cliente.php';
-include '../controllers/ClienteController.php';
-include '../controllers/DataBaseController.php';
+include '../models/Cliente.php';
+include '../controllers/clientController.php';
+include '../controllers/databaseController.php';
 
-use App\controllers\ClienteController;
+use App\controllers\clientController;
 use App\models\Cliente;
 
-$controller = new ClienteController();
+$controller = new clientController();
 $cliente = new CLiente();
 $cliente->set('nombreCompleto', $_POST['nombreCompleto']);
 $cliente->set('tipoDocumento', $_POST['tipoDocumento']);

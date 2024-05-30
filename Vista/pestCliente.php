@@ -6,7 +6,7 @@
     <title>Pestaña cliente</title>
 </head>
 <body>
-<form action="validacionCliente.php" method="post">     
+<form action="valClient.php" method="post">     
        
         <h2>Datos del Cliente</h2>
         <label for="nombreCompleto">Nombre Completo:</label>

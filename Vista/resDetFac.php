@@ -1,22 +1,22 @@
 <?php
 require_once '../models/Model.php';
 require_once '../models/DetalleFactura.php';
-require_once '../controllers/DetalleFacturaController.php';
-require_once '../controllers/DataBaseController.php';
-require_once '../controllers/ArticuloController.php'; 
+require_once '../controllers/detFactController.php';
+require_once '../controllers/databaseController.php';
+require_once '../controllers/artController.php'; 
 
-use App\controllers\DetalleFacturaController;
+use App\controllers\detFactController;
 use App\models\DetalleFactura;
-use App\controllers\ArticuloController; 
+use App\controllers\artController; 
 
-$controller = new DetalleFacturaController();
+$controller = new detFactController();
 $DetalleFactura = new DetalleFactura();
-$articuloController = new ArticuloController(); 
+$artController = new artController(); 
 
 $Preciounitario = null;
 $referenciaFactura = null;
 
-$articulos = $articuloController->read(); 
+$articulos = $artController->read(); 
 
 
 foreach ($articulos as $articulo): 
@@ -44,13 +44,13 @@ $result = $controller->crear($DetalleFactura);
 <body>
     <h1><?php echo $result ? 'Datos guardados' : 'No se pudo guardar el registro'; ?></h1>
     <br>
-    <a href="../vista/pestañaDetalleFactura.php">Agregar mas produtos a la Factura</a>
+    <a href="../vista/pestDetFac.php">Agregar mas produtos a la Factura</a>
     <li><strong>cantidad:</strong> <?php echo $DetalleFactura->get('cantidad'); ?></li>
         <li><strong>Precio:</strong> <?php echo $DetalleFactura->get('precioUnitario'); ?></li>
         <li><strong>ID Aticulo:</strong> <?php echo $DetalleFactura->get('idArticulo'); ?></li>
         <li><strong>referenciaFactura:</strong> <?php echo $DetalleFactura->get('refenciaFactura'); ?></li>
 
         <br>
-    <a href="pestañaFactura.php">Volver</a>
+    <a href="pestFacsa.php">Volver</a>
 </body>
 </html>

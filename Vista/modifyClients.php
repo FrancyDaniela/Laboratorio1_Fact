@@ -1,10 +1,10 @@
 <?php
 
-require_once '../controllers/dataBaseActualizacion.php';
-require_once '../controllers/clienteActualizacion.php';
+require_once '../controllers/databaseAct.php';
+require_once '../controllers/clientAct.php';
 
-use App\controllers\ClienteController;
-use App\controllers\Database;
+use App\controllers\clientController;
+use App\controllers\database;
 
 ?>
 
@@ -31,9 +31,9 @@ use App\controllers\Database;
         $db = new Database($host, $user, $pwd, $datab);
         $db->connect();
 
-        $clienteController = new ClienteController($db);
+        $clientController = new clientController($db);
 
-        $cliente = $clienteController->getClienteById($cliente_id);
+        $cliente = $clientController->getClienteById($cliente_id);
 
         if ($cliente) {
             

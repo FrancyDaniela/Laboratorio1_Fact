@@ -1,15 +1,15 @@
 <?php
-require_once '../controllers/ArticuloController.php';
-require_once '../controllers/FacturaController.php';
+require_once '../controllers/artController.php';
+require_once '../controllers/fcturaController.php';
 
-use App\controllers\ArticuloController;
-use App\controllers\FacturaController;
+use App\controllers\artController;
+use App\controllers\factController;
 
-$articuloController = new ArticuloController();
-$articulos = $articuloController->read();
+$artController = new artController();
+$articulos = $artController->read();
 
-$facturaController = new FacturaController();
-$numFacturas = $facturaController->getCount() + 1;
+$factController = new factController();
+$numFacturas = $factController->getCount() + 1;
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ $numFacturas = $facturaController->getCount() + 1;
         <?php endforeach; ?>
     </ul>
 
-    <form action="../vista/registroDetalleFactura.php" method="post">     
+    <form action="../vista/resDetFac.php" method="post">     
         
         <h1 id="refenciaFactura">Referencia de la factura que se guardan los productos: <?php echo $numFacturas=$numFacturas-1; ?></h1>
         <input type="hidden" name="refenciaFactura" value="<?php echo $numFacturas; ?>">
@@ -45,6 +45,6 @@ $numFacturas = $facturaController->getCount() + 1;
         <input type="submit" value="Generar Factura">
     </form>
     <br>
-    <a href="pestañaFactura.php">Regresar</a>
+    <a href="pestFac.php">Regresar</a>
 </body>
 </html>

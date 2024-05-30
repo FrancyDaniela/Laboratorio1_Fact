@@ -7,18 +7,18 @@
 </head>
 <body>
     <?php
-     include '../controllers/Database.php';
-     include '../controllers/Cliente.php';
+     include '../controllers/databases.php';
+     include '../controllers/cxlient.php';
 
-     use App\controllers\ClienteController;
-    use App\controllers\DatabaseController;
+     use App\controllers\clientController;
+    use App\controllers\databaseController;
 
     $host = 'localhost';
     $user = 'root';
     $pwd = '';
     $datab = 'facturacion_tienda_db';
 
-    $db = new Database($host, $user, $pwd, $datab);
+    $db = new database($host, $user, $pwd, $datab);
     $db->connect();
 
     $cliente = new cliente($db);
@@ -30,13 +30,13 @@
     $telefono = $_POST['telefono'];
 
     if ($cliente->verificarCliente($numeroDocumento)) {
-        echo 'El cliente ya está registrado en la base de datos. <a href="../vista/pestañaFactura.php">crear factur</a>';
+        echo 'El cliente ya está registrado en la base de datos. <a href="../vista/pestFac.php">crear factur</a>';
     } else {
        
         if ($cliente->registrarCliente($nombreCompleto, $tipoDocumento, $numeroDocumento, $email, $telefono)) {
-            echo 'Cliente registrado exitosamente. <a href="../vista/pestañaFactura.php">Crear factura</a>';
+            echo 'Cliente registrado exitosamente. <a href="../vista/pestFac.php">Crear factura</a>';
         } else {
-            echo 'Error al registrar el cliente. <a href="../vista/pestañaCliente.php">Volver a intentar</a>';
+            echo 'Error al registrar el cliente. <a href="../vista/pestCliente.php">Volver a intentar</a>';
         }
     }
 

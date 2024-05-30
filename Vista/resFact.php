@@ -2,17 +2,17 @@
 include '../models/Model.php';
 include '../models/Factura.php';
 include '../models/Cliente.php';
-include '../controllers/DataBaseController.php';
-include '../controllers/FacturaController.php';
-include '../controllers/ClienteController.php'; 
+include '../controllers/databaseController.php';
+include '../controllers/factController.php';
+include '../controllers/clienteController.php'; 
 
-use App\controllers\FacturaController;
+use App\controllers\factController;
 use App\models\Factura;
 use App\models\Cliente;
-use App\controllers\ClienteController;
+use App\controllers\clientController;
 
-$clienteController = new ClienteController();
-$clientes = $clienteController->read();
+$clientController = new clientController();
+$clientes = $clientController->read();
 $idcliente = null;
 $result = false; 
 
@@ -26,9 +26,9 @@ if (is_array($clientes) && count($clientes) > 0) {
 }
 
 if ($idcliente === null) {
-    $mensaje = 'El cliente no está en la base de datos <a href="../vista/pestañaCliente.php">deseas reguistrar el cliente?</a>';
+    $mensaje = 'El cliente no está en la base de datos <a href="../vista/pestCliente.php">deseas registrar el cliente?</a>';
 } else {
-    $controller = new FacturaController();
+    $controller = new factController();
     $factura = new Factura();
     $factura->set('refencia', $_POST['referencia']);
     $factura->set('fecha', $_POST['fecha']);
@@ -39,9 +39,9 @@ if ($idcliente === null) {
     $result = $controller->guardarFactura($factura);
 
     if ($result) {
-        $mensaje = 'Datos guardados <a href="../vista/pestañaDetalleFactura.php">agregar los articulos de la factura </a>';
+        $mensaje = 'Datos guardados <a href="../vista/pestDetFac.php">agregar los articulos de la factura </a>';
     } else {
-        $mensaje = 'No se pudo guardar el registro <a href="../vista/pestañaFactura.php">Volver a crear la factura</a>';
+        $mensaje = 'No se pudo guardar el registro <a href="../vista/pestFac.php">Volver a crear la factura</a>';
     }
 }
 ?>
@@ -67,6 +67,6 @@ if ($idcliente === null) {
     <?php endif; ?>
     <br>
     <br>
-    <a href="pestañaFactura.php">Volver</a>
+    <a href="pestFac.php">Volver</a>
 </body>
 </html>
