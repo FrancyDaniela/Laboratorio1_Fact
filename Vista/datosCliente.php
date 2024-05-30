@@ -1,7 +1,7 @@
 <?php
 
-use App\controllers\ClienteController;
-use App\controllers\Database;
+use App\controllers\clientController;
+use App\controllers\databases;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -28,10 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pwd = '';
         $datab = 'facturacion_tienda_db';
 
-        $db = new Database($host, $user, $pwd, $datab);
+        $db = new databases($host, $user, $pwd, $datab);
         $db->connect();
 
-        $clienteController = new ClienteController($db);
+        $clienteController = new clientController($db);
 
         if ($clienteController->actualizarCliente($cliente_id, $nombreCompleto, $tipoDocumento, $numeroDocumento, $email, $telefono)) {
             echo "Cliente actualizado correctamente.";
@@ -48,4 +48,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <br>
-<a href="listaClientes.php">Volver</a>
+<a href="listClients.php">Volver</a>
