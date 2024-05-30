@@ -4,7 +4,7 @@ namespace App\controllers;
 
 use mysqli;
 
-class DataBaseController
+class databaseController
 {
     private $host = 'localhost';
     private $user = 'root';
