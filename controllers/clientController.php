@@ -2,14 +2,14 @@
 
 namespace App\controllers;
 
-use App\models\Cliente;
-use App\controllers\DataBaseController;
+use App\models\client;
+use App\controllers\databaseController;
 
-class ClienteController
+class clientController
 {
     function read()
     {
-        $dataBase = new DataBaseController();
+        $dataBase = new databaseController();
         $sql = "SELECT * FROM clientes"; // Asegúrate de que el nombre de la tabla sea correcto
         $result = $dataBase->execSql($sql);
         $clientes = [];
@@ -25,7 +25,7 @@ class ClienteController
                 $clientes[] = $cliente;
             }
         }
-        $dataBase->close();
+        $databases->close();
         return $clientes;
     }
 
@@ -38,7 +38,7 @@ class ClienteController
         $sql .= "'".$cliente->get('email')."',";
         $sql .= "'".$cliente->get('telefono')."'";
         $sql .= ")";
-        $dataBase = new DataBaseController();
+        $dataBase = new databaseController();
         $result = $dataBase->execSql($sql);
         $dataBase->close();
         return $result;

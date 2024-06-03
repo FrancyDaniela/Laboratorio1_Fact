@@ -8,7 +8,7 @@
 <body>
     <?php
      include '../controllers/databases.php';
-     include '../controllers/cxlient.php';
+     include '../controllers/client.php';
 
      use App\controllers\clientController;
     use App\controllers\databaseController;
@@ -21,19 +21,19 @@
     $db = new database($host, $user, $pwd, $datab);
     $db->connect();
 
-    $cliente = new cliente($db);
+    $cliente = new Cliente($db);
 
     $nombreCompleto = $_POST['nombreCompleto'];
-    $tipoDocumento = $_POST['tipoDocumento'];
-    $numeroDocumento = $_POST['numeroDocumento'];
+    $tipoDoc = $_POST['tipoDoc'];
+    $numeroDoc = $_POST['numDoc'];
     $email = $_POST['email'];
     $telefono = $_POST['telefono'];
 
-    if ($cliente->verificarCliente($numeroDocumento)) {
+    if ($cliente->verificarCliente($numDoc)) {
         echo 'El cliente ya está registrado en la base de datos. <a href="../vista/pestFac.php">crear factur</a>';
     } else {
        
-        if ($cliente->registrarCliente($nombreCompleto, $tipoDocumento, $numeroDocumento, $email, $telefono)) {
+        if ($cliente->registrarCliente($nombreCompleto, $tipoDoc, $numDoc, $email, $telefono)) {
             echo 'Cliente registrado exitosamente. <a href="../vista/pestFac.php">Crear factura</a>';
         } else {
             echo 'Error al registrar el cliente. <a href="../vista/pestCliente.php">Volver a intentar</a>';

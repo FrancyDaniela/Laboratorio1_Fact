@@ -3,14 +3,14 @@
 namespace App\controllers;
 
 use App\models\Factura;
-use App\controllers\DataBaseController;
+use App\controllers\databaseController;
 
-class FacturaController
+class factController
 {
     
     function mostarFactura()
     {
-        $dataBase = new DataBaseController();
+        $dataBase = new databaseController();
         $sql = "SELECT * FROM facturas";
         $result = $dataBase->execSql($sql);
         $facturas = [];
@@ -39,7 +39,7 @@ class FacturaController
         $sql .= "'".$factura->get('estado')."',";
         $sql .= "'".$factura->get('descuento')."'"; 
         $sql .= ")";
-        $dataBase = new DataBaseController();
+        $dataBase = new databaseController();
         $result = $dataBase->execSql($sql);
         $dataBase->close();
         return $result;
@@ -49,7 +49,7 @@ class FacturaController
 
     public function __construct()
     {
-        $this->dbController = new DataBaseController();
+        $this->dbController = new databaseController();
     }
 
     public function getCount()

@@ -3,16 +3,16 @@
 namespace App\controllers;
 
 require_once '../models/Articulo.php'; 
-require_once 'DataBaseController.php';
+require_once 'databaseController.php';
 
 use App\models\Articulo;
-use App\controllers\DataBaseController;
+use App\controllers\databaseController;
 
-class ArticuloController
+class artController
 {
     function read()
     {
-        $dataBase = new DataBaseController();
+        $dataBase = new databaseController();
         $sql = "SELECT * FROM articulos";
         $result = $dataBase->execSql($sql);
         $Articulos = [];

@@ -2,13 +2,13 @@
 
 namespace App\controllers;
 
-use App\controllers\Database;
+use App\controllers\databases;
 
 class ClienteController
 {
     private $db;
 
-    public function __construct(Database $db)
+    public function __construct(databases $db)
     {
         $this->db = $db;
     }

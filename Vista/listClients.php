@@ -19,9 +19,9 @@
         <?php
 
         include '../controllers/databaseAct.php';
-        include '../controllers/clienteActualizacion.php';
+        include '../controllers/clientAct.php';
 
-        use App\controllers\ClienteController;
+        use App\controllers\clientController;
         use App\controllers\databases;
 
         $host = 'localhost';
@@ -29,11 +29,11 @@
         $pwd = '';
         $datab = 'facturacion_tienda_db';
 
-        $db = new database($host, $user, $pwd, $datab);
+        $db = new databases($host, $user, $pwd, $datab);
         $db->connect();
-        $clientController = new ClientController($db);
+        $clienteController = new clientController($db);
 
-        $clientes = $clientController->getAllClientes();
+        $clientes = $clienteController->getAllClientes();
 
         if ($clientes) {
             
