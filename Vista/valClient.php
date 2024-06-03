@@ -24,16 +24,16 @@
     $cliente = new Cliente($db);
 
     $nombreCompleto = $_POST['nombreCompleto'];
-    $tipoDoc = $_POST['tipoDoc'];
-    $numeroDoc = $_POST['numDoc'];
+    $tipoDoc = $_POST['tipoDocumento'];
+    $numeroDoc = $_POST['numDocumento'];
     $email = $_POST['email'];
     $telefono = $_POST['telefono'];
 
-    if ($cliente->verificarCliente($numDoc)) {
+    if ($cliente->verificarCliente($numDocumento)) {
         echo 'El cliente ya está registrado en la base de datos. <a href="../vista/pestFac.php">crear factur</a>';
     } else {
        
-        if ($cliente->registrarCliente($nombreCompleto, $tipoDoc, $numDoc, $email, $telefono)) {
+        if ($cliente->registrarCliente($nombreCompleto, $tipoDocumento, $numDocumento, $email, $telefono)) {
             echo 'Cliente registrado exitosamente. <a href="../vista/pestFac.php">Crear factura</a>';
         } else {
             echo 'Error al registrar el cliente. <a href="../vista/pestCliente.php">Volver a intentar</a>';

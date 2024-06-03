@@ -4,7 +4,7 @@ include '../models/Factura.php';
 include '../models/Cliente.php';
 include '../controllers/databaseController.php';
 include '../controllers/factController.php';
-include '../controllers/clienteController.php'; 
+include '../controllers/clientController.php'; 
 
 use App\controllers\factController;
 use App\models\Factura;

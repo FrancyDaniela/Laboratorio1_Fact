@@ -2,7 +2,7 @@
 
 namespace App\controllers;
 
-use App\models\client;
+use App\models\Cliente;
 use App\controllers\databaseController;
 
 class clientController
@@ -25,7 +25,7 @@ class clientController
                 $clientes[] = $cliente;
             }
         }
-        $databases->close();
+        $dataBase->close();
         return $clientes;
     }
 
@@ -46,10 +46,27 @@ class clientController
 
     function update()
     {
+        $sql = "UPDATE clientes SET ";
+        $sql .= "nombreCompleto = '".$cliente->get('nombreCompleto')."', ";
+        $sql .= "tipoDocumento = '".$cliente->get('tipoDocumento')."', ";
+        $sql .= "email = '".$cliente->get('email')."', ";
+        $sql .= "telefono = '".$cliente->get('telefono')."' ";
+        $sql .= "WHERE numeroDocumento = '".$cliente->get('numeroDocumento')."'";
+    
+        $dataBase = new databaseController();
+        $result = $dataBase->execSql($sql);
+        $dataBase->close();
+        return $result;
     }
 
     function delete()
     {
+        $sql = "DELETE FROM clientes WHERE numeroDocumento = '".$numeroDocumento."'";
+
+        $dataBase = new databaseController();
+        $result = $dataBase->execSql($sql);
+        $dataBase->close();
+        return $result;
     }
 }
 ?>

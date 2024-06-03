@@ -5,8 +5,8 @@ namespace App\models;
 class Cliente extends Model{
     protected $idCliente = "";
     protected $nombreCompleto = "";
-    protected $tipoDoc = "";
-    protected $numDoc = "";
+    protected $tipoDocumento = "";
+    protected $numDocumentoss = "";
     protected $email = "";
     protected $telefono = "";
 
