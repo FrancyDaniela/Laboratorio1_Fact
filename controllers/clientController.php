@@ -44,7 +44,7 @@ class clientController
         return $result;
     }
 
-    function update()
+    function update($cliente)
     {
         $sql = "UPDATE clientes SET ";
         $sql .= "nombreCompleto = '".$cliente->get('nombreCompleto')."', ";
@@ -52,14 +52,14 @@ class clientController
         $sql .= "email = '".$cliente->get('email')."', ";
         $sql .= "telefono = '".$cliente->get('telefono')."' ";
         $sql .= "WHERE numeroDocumento = '".$cliente->get('numeroDocumento')."'";
-    
+
         $dataBase = new databaseController();
         $result = $dataBase->execSql($sql);
         $dataBase->close();
         return $result;
     }
 
-    function delete()
+    function delete($numeroDocumento)
     {
         $sql = "DELETE FROM clientes WHERE numeroDocumento = '".$numeroDocumento."'";
 

@@ -21,7 +21,7 @@ class client {
         $telefono = $this->db->escape_string($telefono);
 
         $sql_insert = "INSERT INTO clientes (nombreCompleto, tipoDocumento, numeroDocumento, email, telefono) 
-                       VALUES ('$nombreCompleto', '$tipoDocumento', '$numeroDocumento', '$email', '$telefono')";
+                    VALUES ('$nombreCompleto', '$tipoDocumento', '$numeroDocumento', '$email', '$telefono')";
         
         return $this->db->query($sql_insert);
     }

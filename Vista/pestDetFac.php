@@ -1,9 +1,11 @@
 <?php
 require_once '../controllers/artController.php';
-require_once '../controllers/fcturaController.php';
+require_once '../controllers/factController.php';
+require_once '../controllers/detFactController.php';
 
 use App\controllers\artController;
 use App\controllers\factController;
+use App\controllers\detFactController;
 
 $artController = new artController();
 $articulos = $artController->read();
@@ -24,7 +26,7 @@ $numFacturas = $factController->getCount() + 1;
     <ul>
         <?php foreach ($articulos as $articulo): ?>
             <li>
-                <strong>Numero De Serie:</strong> <?php echo $articulo->get('id'); ?>, 
+                <strong>Número De Serie:</strong> <?php echo $articulo->get('id'); ?>, 
                 <strong>Nombre:</strong> <?php echo $articulo->get('nombre'); ?>, 
                 <strong>Precio:</strong> <?php echo $articulo->get('precio'); ?><strong>$</strong>
             </li>
@@ -33,8 +35,8 @@ $numFacturas = $factController->getCount() + 1;
 
     <form action="../vista/resDetFac.php" method="post">     
         
-        <h1 id="refenciaFactura">Referencia de la factura que se guardan los productos: <?php echo $numFacturas=$numFacturas-1; ?></h1>
-        <input type="hidden" name="refenciaFactura" value="<?php echo $numFacturas; ?>">
+        <h1 id="referenciaFactura">Referencia de la factura que se guardan los productos: <?php echo $numFacturas=$numFacturas-1; ?></h1>
+        <input type="hidden" name="referenciaFactura" value="<?php echo $numFacturas; ?>">
         <h2>Detalles de la Factura</h2>
         <label for="cantidad">Cantidad:</label>
         <input type="number" name="cantidad" id="cantidad" required>

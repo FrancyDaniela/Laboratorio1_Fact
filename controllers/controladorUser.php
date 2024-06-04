@@ -29,10 +29,10 @@ class controladorUser
         $result = $stmt->get_result();
         
         if ($result->num_rows > 0) {
-            // Usuario válido
+        
             return true;
         } else {
-            // Usuario inválido
+        
             return false;
         }
 
@@ -45,7 +45,6 @@ class controladorUser
     }
 }
 
-// fuera de la clase controladorUser, redirigimos según el resultado de la validación
 
 $controlador = new controladorUser();
 
@@ -54,11 +53,11 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
     $password = $_POST['password']; 
 
     if ($controlador->validarUsuario($usuario, $password)) {
-        // Usuario válido, redirigir a generadorFactura.php
+    
         header("Location: pestFac.php");
         exit;
     } else {
-        // Usuario inválido, redirigir a una página de error
+    
         header("Location: valUser.php");
         exit;
     }

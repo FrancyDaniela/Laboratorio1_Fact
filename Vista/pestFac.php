@@ -1,20 +1,24 @@
 <?php
 require_once '../controllers/databaseController.php';
 require_once '../controllers/factController.php';
+require_once '../controllers/clientController.php'; 
 
 use App\controllers\factController;
+use App\controllers\clientController; 
+
+$clientController = new clientController();
+$clientes = $clientController->read();
 
 $factController = new factController();
 $numFacturas = $factController->getCount() + 1;
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facturación</title>
-    <link rel="stylesheet" href="../vista/pestFacCss.css">
+    <link rel="stylesheet" type="text/css" href="Vista/pestFac.css">
 </head>
 <body>
 <div class="parent">
@@ -42,14 +46,14 @@ $numFacturas = $factController->getCount() + 1;
         </form>
         <h1>Buscar Factura</h1>
         <form action="detalleFactura.php" method="get">
-        <label for="numeroDocumento">Número de Documento:</label>
-        <input type="text" id="numeroDocumento" name="numeroDocumento" required>
-        <br>
-        <label for="referencia">Referencia de la Factura:</label>
-        <input type="text" id="referencia" name="referencia" required>
-        <br>
-        <button type="submit">Buscar Factura</button>
-    </form>
+            <label for="numeroDocumento">Número de Documento:</label>
+            <input type="text" id="numeroDocumento" name="numeroDocumento" required>
+            <br>
+            <label for="referencia">Referencia de la Factura:</label>
+            <input type="text" id="referencia" name="referencia" required>
+            <br>
+            <button type="submit">Buscar Factura</button>
+        </form>
     </div>
     <div class="div3">
         <form action="pestCliente.php" method="GET">

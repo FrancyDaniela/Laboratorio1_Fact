@@ -21,7 +21,7 @@ $articulos = $artController->read();
 
 foreach ($articulos as $articulo): 
     if($articulo->get('id') == $_POST['idArticulo'] ){
-       $Preciounitario = $articulo->get('precio');
+    $Preciounitario = $articulo->get('precio');
     }
 endforeach;
 

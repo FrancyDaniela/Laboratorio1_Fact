@@ -19,7 +19,7 @@ use App\controllers\database;
     <h1>Modificar Información del Cliente</h1>
 
     <?php
-   
+
     if (isset($_GET['id']) && !empty($_GET['id'])) {
         $cliente_id = $_GET['id'];
 

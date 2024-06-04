@@ -26,11 +26,11 @@ if (is_array($clientes) && count($clientes) > 0) {
 }
 
 if ($idcliente === null) {
-    $mensaje = 'El cliente no está en la base de datos <a href="../vista/pestCliente.php">deseas registrar el cliente?</a>';
+    $mensaje = 'El cliente no está registrado en la base de datos <a href="../vista/pestCliente.php">deseas registrar el cliente?</a>';
 } else {
     $controller = new factController();
     $factura = new Factura();
-    $factura->set('refencia', $_POST['referencia']);
+    $factura->set('referencia', $_POST['referencia']);
     $factura->set('fecha', $_POST['fecha']);
     $factura->set('idCliente', $idcliente);
     $factura->set('estado', $_POST['estado']);
@@ -40,31 +40,30 @@ if ($idcliente === null) {
 
     if ($result) {
         $mensaje = 'Datos guardados <a href="../vista/pestDetFac.php">agregar los articulos de la factura </a>';
+        // Mostrar datos de la factura si se generó correctamente
+        $mensaje .= '<h2>Datos de la factura:</h2>
+                     <ul>
+                         <li><strong>Referencia:</strong> ' . $factura->get('referencia') . '</li>
+                         <li><strong>Fecha:</strong> ' . $factura->get('fecha') . '</li>
+                         <li><strong>ID Cliente:</strong> ' . $factura->get('idCliente') . '</li>
+                         <li><strong>Estado:</strong> ' . $factura->get('estado') . '</li>
+                         <li><strong>Descuento:</strong> ' . $factura->get('descuento') . '</li>
+                     </ul>';
     } else {
         $mensaje = 'No se pudo guardar el registro <a href="../vista/pestFac.php">Volver a crear la factura</a>';
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index2.css">
     <title>Registrar Factura</title>
 </head>
 <body>
     <h1><?php echo $mensaje; ?></h1>
-    <?php if ($result): ?>
-        <h2>Datos de la factura:</h2>
-        <ul>
-            <li><strong>Referencia:</strong> <?php echo $factura->get('refencia'); ?></li>
-            <li><strong>Fecha:</strong> <?php echo $factura->get('fecha'); ?></li>
-            <li><strong>ID Cliente:</strong> <?php echo $factura->get('idCliente'); ?></li>
-            <li><strong>Estado:</strong> <?php echo $factura->get('estado'); ?></li>
-            <li><strong>Descuento:</strong> <?php echo $factura->get('descuento'); ?></li>
-        </ul>
-    <?php endif; ?>
     <br>
     <br>
     <a href="pestFac.php">Volver</a>
